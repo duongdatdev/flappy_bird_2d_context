@@ -58,13 +58,16 @@ class Game {
   update(secondsPassed) {
     this.bird.update(secondsPassed);
     this.spawnPipe(secondsPassed);
+
+    if (this.bird.isOutOfScreen(this.canvas.width, this.canvas.height)) {
+      this.isStart = false;
+      this.isDeath = true;
+    }
+
     for (let pipePair of this.pipePairList) {
       // console.log('update');
       pipePair.update(secondsPassed);
-      if (
-        pipePair.isPipeTouchedBird(this.bird) ||
-        this.bird.isOutOfScreen(this.canvas.width, this.canvas.height)
-      ) {
+      if (pipePair.isPipeTouchedBird(this.bird)) {
         // console.log("bird touched pipe pair");
         this.isStart = false;
         this.isDeath = true;
@@ -81,10 +84,9 @@ class Game {
   spawnPipe(secondsPassed) {
     this.spawnPipeTimer += secondsPassed;
     if (this.spawnPipeTimer >= SPAWN_PIPE_INTERVAL) {
-      let maxSpaceY = this.canvas.height - 100;
+      let maxSpaceY = this.canvas.height - 50;
 
-      let spaceY =
-        Math.floor(Math.random() * (maxSpaceY - MIN_SPACE_Y)) + MIN_SPACE_Y;
+      let spaceY = Math.floor(Math.random() * (maxSpaceY - MIN_SPACE_Y)) + MIN_SPACE_Y;
 
       let pipePair = new PipePair(
         this.ctx,
