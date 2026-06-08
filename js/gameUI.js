@@ -1,8 +1,8 @@
 class GameUI {
-  constructor(ctx, width, height) {
+  constructor(ctx, canvasWidth, canvasHeight) {
     this.ctx = ctx;
-    this.width = width;
-    this.height = height;
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
   }
 
   drawScore(score = 0) {
@@ -16,10 +16,15 @@ class GameUI {
     // this.ctx.fillText(score, this.width/2, 30);
   }
 
-  // drawBackground(){
-  //   this.ctx.fillStyle = "#87cefa"
-  //   this.fillRect =
-  // }
+  drawBackground() {
+    //draw sky
+    this.ctx.fillStyle = "#87cefa";
+    this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+
+    //draw ground
+    this.ctx.fillStyle = "#01a550";
+    this.ctx.fillRect(0, this.canvasHeight -50, this.canvasWidth, 50)
+  }
 
   drawMessage(text, x, y) {
     this.ctx.font = "bold 40px Arial";

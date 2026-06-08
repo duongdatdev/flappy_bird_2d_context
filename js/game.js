@@ -36,6 +36,7 @@ class Game {
 
   draw() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.gameUI.drawBackground();
 
     for (let pipePair of this.pipePairList) {
       pipePair.draw();

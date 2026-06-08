@@ -35,7 +35,7 @@ class Bird extends GameObject {
   down() {}
 
   isOutOfScreen(canvasWidth, canvasHeight) {
-    return this.y > canvasHeight - this.radius 
+    return this.y > canvasHeight - 50 - this.radius 
             || this.y - this.radius < 0;
   }
 
