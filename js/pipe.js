@@ -16,15 +16,21 @@ class PipePair extends GameObject {
   }
 
   draw() {
-    this.ctx.fillStyle = 'green';
+    //top pipe
+    this.ctx.fillStyle = "#76c10f";
     this.ctx.fillRect(this.x, this.y, this.width, this.topPipeHeight);
+    this.ctx.st
+    this.ctx.fillRect(this.x - 2, this.topPipeHeight - 2, this.width + 4, 10);
 
+    //bottom pipe
     this.ctx.fillRect(
       this.x,
       this.bottomPipeY,
       this.width,
       this.bottomPipeHeight,
     );
+
+    this.ctx.fillRect( this.x - 2, this.bottomPipeY - 2, this.width + 4, 10)
   }
 
   update(secondsPassed) {
@@ -33,7 +39,7 @@ class PipePair extends GameObject {
   }
 
   increaseSpeed(amount) {
-    this.vy += amount* secondsPassed;
+    this.vy += amount * secondsPassed;
   }
 
   isPipeTouchedBird(bird) {

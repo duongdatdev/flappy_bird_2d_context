@@ -1,5 +1,6 @@
 class GameObject {
   constructor(ctx, x, y, width, height, vx, vy) {
+    /** @type {CanvasRenderingContext2D} */
     this.ctx = ctx;
     this.x = x;
     this.y = y;

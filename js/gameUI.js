@@ -9,11 +9,11 @@ class GameUI {
     this.ctx.fillStyle = "black";
     this.ctx.font = "bold 30px Arial";
     this.ctx.textAlign = "center";
-    this.ctx.fillText(`Score ${score}`, this.width / 2, 30);
+    this.ctx.fillText(`Score ${score}`, this.canvasWidth / 2, 30);
 
     //test only
     // score = 15;
-    // this.ctx.fillText(score, this.width/2, 30);
+    // this.ctx.fillText(score, this.canvasWidth / 2, 30);
   }
 
   drawBackground() {

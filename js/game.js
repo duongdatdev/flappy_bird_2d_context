@@ -1,11 +1,12 @@
 let ctx;
-const SPAWN_PIPE_INTERVAL = 1.5;
-const PIPE_WIDTH = 30;
+const SPAWN_PIPE_INTERVAL = 1.7;
+const PIPE_WIDTH = 50;
 const SPACE_HEIGHT = 150;
 const MIN_SPACE_Y = 50;
 
 class Game {
   constructor(canvas) {
+    /** @type {CanvasRenderingContext2D} */
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
 
@@ -84,7 +85,7 @@ class Game {
   spawnPipe(secondsPassed) {
     this.spawnPipeTimer += secondsPassed;
     if (this.spawnPipeTimer >= SPAWN_PIPE_INTERVAL) {
-      let maxSpaceY = this.canvas.height - 50;
+      let maxSpaceY = this.canvas.height - SPACE_HEIGHT - MIN_SPACE_Y;
 
       let spaceY = Math.floor(Math.random() * (maxSpaceY - MIN_SPACE_Y)) + MIN_SPACE_Y;
 
