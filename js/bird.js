@@ -3,16 +3,34 @@ class Bird extends GameObject {
     super(ctx, x, y, radius, radius, vx, vy);
     this.radius = radius;
     this.gravity = 900;
+
+    this.image = new Image();
+    this.imageLoaded = false;
+    this.image.onload = () => {
+      this.imageLoaded = true;
+    };
+      this.image.src = "assets/yellowbird.png";
   }
 
   draw() {
-    //base
+    const diameter = this.radius * 2;
+    if (this.imageLoaded) {
+      this.ctx.drawImage(
+        this.image,
+        this.x - this.radius,
+        this.y - this.radius,
+        diameter,
+        diameter,
+      );
+      return;
+    }
+
+    //fallback
     this.ctx.beginPath();
     this.ctx.fillStyle = "yellow";
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     this.ctx.fill();
 
-    //beak
     this.ctx.beginPath();
     this.ctx.fillStyle = "red";
     this.ctx.moveTo(this.x + this.radius + 12, this.y);

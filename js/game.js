@@ -140,9 +140,9 @@ class Game {
       this.oldTimeStamp = timeStamp;
 
       this.update(this.secondsPassed);
-      this.draw();
     }
 
+    this.draw();
     requestAnimationFrame((timeStamp) => this.gameLoop(timeStamp));
   }
 }
